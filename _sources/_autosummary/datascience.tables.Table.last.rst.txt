@@ -1,0 +1,6 @@
+﻿datascience.tables.Table.last
+=============================
+
+.. currentmodule:: datascience.tables
+
+.. automethod:: Table.last

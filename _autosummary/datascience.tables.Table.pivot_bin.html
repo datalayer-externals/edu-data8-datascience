@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>datascience.tables.Table.pivot_bin &#8212; datascience 0.17.5 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="datascience.tables.Table.show" href="datascience.tables.Table.show.html" />
+    <link rel="prev" title="datascience.tables.Table.bin" href="datascience.tables.Table.bin.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="datascience.tables.Table.show.html" title="datascience.tables.Table.show"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="datascience.tables.Table.bin.html" title="datascience.tables.Table.bin"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">datascience 0.17.5 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../tables.html" accesskey="U">Tables (<code class="docutils literal notranslate"><span class="pre">datascience.tables</span></code>)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">datascience.tables.Table.pivot_bin</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="datascience-tables-table-pivot-bin">
+<h1>datascience.tables.Table.pivot_bin<a class="headerlink" href="#datascience-tables-table-pivot-bin" title="Permalink to this heading">¶</a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="datascience.tables.Table.pivot_bin">
+<span class="sig-prename descclassname"><span class="pre">Table.</span></span><span class="sig-name descname"><span class="pre">pivot_bin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pivot_columns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">vargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datascience/tables.html#Table.pivot_bin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datascience.tables.Table.pivot_bin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Form a table with columns formed by the unique tuples in pivot_columns
+containing counts per bin of the values associated with each tuple in the value_column.</p>
+<p>By default, bins are chosen to contain all values in the value_column. The
+following named arguments from numpy.histogram can be applied to
+specialize bin widths:</p>
+<dl class="simple">
+<dt>Args:</dt><dd><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">bins</span></code> (int or sequence of scalars): If bins is an int,</dt><dd><p>it defines the number of equal-width bins in the given range
+(10, by default). If bins is a sequence, it defines the bin
+edges, including the rightmost edge, allowing for non-uniform
+bin widths.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">range</span></code> ((float, float)): The lower and upper range of</dt><dd><p>the bins. If not provided, range contains all values in the
+table. Values outside the range are ignored.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">normed</span></code> (bool): If False, the result will contain the number of</dt><dd><p>samples in each bin. If True, the result is normalized such that
+the integral over the range is 1.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><p>New pivot table with unique rows of specified <code class="docutils literal notranslate"><span class="pre">pivot_columns</span></code>, 
+populated with 0s and 1s with respect to values from <code class="docutils literal notranslate"><span class="pre">value_column</span></code> 
+distributed into specified <code class="docutils literal notranslate"><span class="pre">bins</span></code> and <code class="docutils literal notranslate"><span class="pre">range</span></code>.</p>
+</dd>
+</dl>
+<p>Examples:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">from_records</span><span class="p">([</span>
+<span class="gp">... </span>  <span class="p">{</span>
+<span class="gp">... </span>   <span class="s1">&#39;column1&#39;</span><span class="p">:</span><span class="s1">&#39;data1&#39;</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="s1">&#39;column2&#39;</span><span class="p">:</span><span class="mi">86</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="s1">&#39;column3&#39;</span><span class="p">:</span><span class="s1">&#39;b&#39;</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="s1">&#39;column4&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span>
+<span class="gp">... </span>  <span class="p">},</span>
+<span class="gp">... </span>  <span class="p">{</span>
+<span class="gp">... </span>   <span class="s1">&#39;column1&#39;</span><span class="p">:</span><span class="s1">&#39;data2&#39;</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="s1">&#39;column2&#39;</span><span class="p">:</span><span class="mi">51</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="s1">&#39;column3&#39;</span><span class="p">:</span><span class="s1">&#39;c&#39;</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="s1">&#39;column4&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span>
+<span class="gp">... </span>  <span class="p">},</span>
+<span class="gp">... </span>  <span class="p">{</span>
+<span class="gp">... </span>   <span class="s1">&#39;column1&#39;</span><span class="p">:</span><span class="s1">&#39;data3&#39;</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="s1">&#39;column2&#39;</span><span class="p">:</span><span class="mi">32</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="s1">&#39;column3&#39;</span><span class="p">:</span><span class="s1">&#39;a&#39;</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="s1">&#39;column4&#39;</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span>
+<span class="gp">... </span>  <span class="p">}</span>
+<span class="gp">... </span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>
+<span class="go">column1 | column2 | column3 | column4</span>
+<span class="go">data1   | 86      | b       | 5</span>
+<span class="go">data2   | 51      | c       | 3</span>
+<span class="go">data3   | 32      | a       | 6</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">pivot_bin</span><span class="p">(</span><span class="n">pivot_columns</span><span class="o">=</span><span class="s1">&#39;column1&#39;</span><span class="p">,</span><span class="n">value_column</span><span class="o">=</span><span class="s1">&#39;column2&#39;</span><span class="p">)</span>
+<span class="go">bin  | data1 | data2 | data3</span>
+<span class="go">32   | 0     | 0     | 1</span>
+<span class="go">37.4 | 0     | 0     | 0</span>
+<span class="go">42.8 | 0     | 0     | 0</span>
+<span class="go">48.2 | 0     | 1     | 0</span>
+<span class="go">53.6 | 0     | 0     | 0</span>
+<span class="go">59   | 0     | 0     | 0</span>
+<span class="go">64.4 | 0     | 0     | 0</span>
+<span class="go">69.8 | 0     | 0     | 0</span>
+<span class="go">75.2 | 0     | 0     | 0</span>
+<span class="go">80.6 | 1     | 0     | 0</span>
+<span class="gp">... </span><span class="p">(</span><span class="mi">1</span> <span class="n">rows</span> <span class="n">omitted</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">pivot_bin</span><span class="p">(</span><span class="n">pivot_columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;column1&#39;</span><span class="p">,</span><span class="s1">&#39;column2&#39;</span><span class="p">],</span><span class="n">value_column</span><span class="o">=</span><span class="s1">&#39;column4&#39;</span><span class="p">)</span>
+<span class="go">bin  | data1-86 | data2-51 | data3-32</span>
+<span class="go">3    | 0        | 1        | 0</span>
+<span class="go">3.3  | 0        | 0        | 0</span>
+<span class="go">3.6  | 0        | 0        | 0</span>
+<span class="go">3.9  | 0        | 0        | 0</span>
+<span class="go">4.2  | 0        | 0        | 0</span>
+<span class="go">4.5  | 0        | 0        | 0</span>
+<span class="go">4.8  | 1        | 0        | 0</span>
+<span class="go">5.1  | 0        | 0        | 0</span>
+<span class="go">5.4  | 0        | 0        | 0</span>
+<span class="go">5.7  | 0        | 0        | 1</span>
+<span class="gp">... </span><span class="p">(</span><span class="mi">1</span> <span class="n">rows</span> <span class="n">omitted</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">pivot_bin</span><span class="p">(</span><span class="n">pivot_columns</span><span class="o">=</span><span class="s1">&#39;column1&#39;</span><span class="p">,</span><span class="n">value_column</span><span class="o">=</span><span class="s1">&#39;column2&#39;</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">100</span><span class="p">])</span>
+<span class="go">bin  | data1 | data2 | data3</span>
+<span class="go">20   | 0     | 0     | 1</span>
+<span class="go">45   | 1     | 1     | 0</span>
+<span class="go">100  | 0     | 0     | 0</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">pivot_bin</span><span class="p">(</span><span class="n">pivot_columns</span><span class="o">=</span><span class="s1">&#39;column1&#39;</span><span class="p">,</span><span class="n">value_column</span><span class="o">=</span><span class="s1">&#39;column2&#39;</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">30</span><span class="p">,</span><span class="mi">60</span><span class="p">])</span>
+<span class="go">bin  | data1 | data2 | data3</span>
+<span class="go">30   | 0     | 0     | 1</span>
+<span class="go">36   | 0     | 0     | 0</span>
+<span class="go">42   | 0     | 0     | 0</span>
+<span class="go">48   | 0     | 1     | 0</span>
+<span class="go">54   | 0     | 0     | 0</span>
+<span class="go">60   | 0     | 0     | 0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="datascience.tables.Table.bin.html"
+                          title="previous chapter">datascience.tables.Table.bin</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="datascience.tables.Table.show.html"
+                          title="next chapter">datascience.tables.Table.show</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/_autosummary/datascience.tables.Table.pivot_bin.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="datascience.tables.Table.show.html" title="datascience.tables.Table.show"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="datascience.tables.Table.bin.html" title="datascience.tables.Table.bin"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">datascience 0.17.5 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../tables.html" >Tables (<code class="docutils literal notranslate"><span class="pre">datascience.tables</span></code>)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">datascience.tables.Table.pivot_bin</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2015, John DeNero, David Culler, Alvin Wan, and Sam Lau.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.1.
+    </div>
+  </body>
+</html>

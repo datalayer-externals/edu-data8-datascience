@@ -1,5 +1,5 @@
-datascience.tables.Table.from_array
-===================================
+﻿datascience.tables.Table.from\_array
+====================================
 
 .. currentmodule:: datascience.tables
 

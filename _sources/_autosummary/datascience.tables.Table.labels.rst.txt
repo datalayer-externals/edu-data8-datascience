@@ -1,6 +1,6 @@
-datascience.tables.Table.labels
+﻿datascience.tables.Table.labels
 ===============================
 
 .. currentmodule:: datascience.tables
 
-.. autoattribute:: Table.labels
+.. autoproperty:: Table.labels

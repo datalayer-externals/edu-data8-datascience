@@ -1,0 +1,6 @@
+﻿datascience.tables.Table.move\_column
+=====================================
+
+.. currentmodule:: datascience.tables
+
+.. automethod:: Table.move_column

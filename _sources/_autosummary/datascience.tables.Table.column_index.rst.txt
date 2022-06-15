@@ -1,5 +1,5 @@
-datascience.tables.Table.column_index
-=====================================
+﻿datascience.tables.Table.column\_index
+======================================
 
 .. currentmodule:: datascience.tables
 
