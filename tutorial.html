@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Start Here: datascience Tutorial &#8212; datascience 0.17.5 documentation</title>
+    <title>Start Here: datascience Tutorial &#8212; datascience 0.17.6 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css" />
     
@@ -15,6 +15,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
@@ -37,7 +38,7 @@
         <li class="right" >
           <a href="index.html" title="Welcome to datascience’s documentation!"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">datascience 0.17.5 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">datascience 0.17.6 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Start Here: <code class="docutils literal notranslate"><span class="pre">datascience</span></code> Tutorial</a></li> 
       </ul>
     </div>  
@@ -452,16 +453,16 @@ conditionally with <a class="reference internal" href="_autosummary/datascience.
 <span class="gp">In [47]: </span><span class="n">normal_data</span>
 <span class="gh">Out[47]: </span><span class="go"></span>
 <span class="go">data1     | data2</span>
-<span class="go">2.22469   | 4.50578</span>
-<span class="go">-0.429854 | 2.97397</span>
-<span class="go">2.95998   | 1.58217</span>
-<span class="go">2.60092   | 6.39088</span>
-<span class="go">0.964021  | 5.12418</span>
-<span class="go">0.397132  | -0.968218</span>
-<span class="go">-0.224948 | 5.99193</span>
-<span class="go">3.98148   | 3.82497</span>
-<span class="go">-0.103963 | 1.63257</span>
-<span class="go">4.14685   | 5.16326</span>
+<span class="go">3.66198   | 3.46609</span>
+<span class="go">4.10266   | 1.83975</span>
+<span class="go">-4.36557  | -0.0509045</span>
+<span class="go">0.964716  | -0.961202</span>
+<span class="go">0.867027  | 5.13056</span>
+<span class="go">-0.847042 | 7.07089</span>
+<span class="go">0.298776  | 8.32302</span>
+<span class="go">0.886488  | 2.34914</span>
+<span class="go">0.0591358 | -0.753439</span>
+<span class="go">2.3271    | 6.5412</span>
 <span class="go">... (90 rows omitted)</span>
 </pre></div>
 </div>
@@ -514,16 +515,16 @@ converting to a pandas dataframe with <a class="reference internal" href="_autos
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [56]: </span><span class="n">normal_data</span>
 <span class="gh">Out[56]: </span><span class="go"></span>
 <span class="go">data1     | data2</span>
-<span class="go">2.22469   | 4.50578</span>
-<span class="go">-0.429854 | 2.97397</span>
-<span class="go">2.95998   | 1.58217</span>
-<span class="go">2.60092   | 6.39088</span>
-<span class="go">0.964021  | 5.12418</span>
-<span class="go">0.397132  | -0.968218</span>
-<span class="go">-0.224948 | 5.99193</span>
-<span class="go">3.98148   | 3.82497</span>
-<span class="go">-0.103963 | 1.63257</span>
-<span class="go">4.14685   | 5.16326</span>
+<span class="go">3.66198   | 3.46609</span>
+<span class="go">4.10266   | 1.83975</span>
+<span class="go">-4.36557  | -0.0509045</span>
+<span class="go">0.964716  | -0.961202</span>
+<span class="go">0.867027  | 5.13056</span>
+<span class="go">-0.847042 | 7.07089</span>
+<span class="go">0.298776  | 8.32302</span>
+<span class="go">0.886488  | 2.34914</span>
+<span class="go">0.0591358 | -0.753439</span>
+<span class="go">2.3271    | 6.5412</span>
 <span class="go">... (90 rows omitted)</span>
 
 <span class="go"># index = False prevents row numbers from appearing in the resulting CSV</span>
@@ -637,8 +638,8 @@ non-smokers.</p>
 
 <span class="gp">In [73]: </span><span class="n">bootstrapped_diff_means</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 <span class="gh">Out[73]: </span><span class="go"></span>
-<span class="go">array([-0.98981063, -0.90301811,  1.16700641,  0.19187044,  0.92573396,</span>
-<span class="go">       -0.41940369, -0.7722626 ,  0.36621723,  0.2633606 ,  0.5813337 ])</span>
+<span class="go">array([ 0.67718512, -0.44393559,  0.93030455,  2.13599342,  0.02565931,</span>
+<span class="go">        0.36186907,  1.12198607,  0.30548014,  0.12705639, -0.14876061])</span>
 
 <span class="gp">In [74]: </span><span class="n">num_diffs_greater</span> <span class="o">=</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">bootstrapped_diff_means</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">abs</span><span class="p">(</span><span class="n">observed_diff</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 
@@ -725,13 +726,13 @@ non-smokers.</p>
         <li class="right" >
           <a href="index.html" title="Welcome to datascience’s documentation!"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">datascience 0.17.5 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">datascience 0.17.6 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Start Here: <code class="docutils literal notranslate"><span class="pre">datascience</span></code> Tutorial</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2015, John DeNero, David Culler, Alvin Wan, and Sam Lau.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
   </body>
 </html>
